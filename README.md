@@ -37,9 +37,25 @@ Test-Driven Development Study
     <td align="center">
       <a href="https://github.com/kdelay"><img src="https://avatars.githubusercontent.com/kdelay" width="130px;" alt=""></a>
     </td>
+    <td>
+      <a href="https://github.com/gangfunction"><img src="https://avatars.githubusercontent.com/gangfunction" width="130px;" alt=""></a>
+    </td>
+    <td>
+      <a href="https://github.com/2yongman"><img src="https://avatars.githubusercontent.com/2yongman" width="130px;" alt=""></a>
+    </td>
+    <td>
+      <a href="https://github.com/RealWarm"><img src="https://avatars.githubusercontent.com/RealWarm" width="130px;" alt=""></a>
+    </td>
+    <td>
+      <a href="https://github.com/vivalahm"><img src="https://avatars.githubusercontent.com/vivalahm" width="130px;" alt=""></a>
+    </td>
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/kdelay"><b>kdelay</b></a></td>
+    <td align="center"><a href="https://github.com/gangfunction"><b>gangfunction</b></a></td>
+    <td align="center"><a href="https://github.com/2yongman"><b>2yongman</b></a></td>
+    <td align="center"><a href="https://github.com/RealWarm"><b>RealWarm</b></a></td>
+    <td align="center"><a href="https://github.com/vivalahm"><b>vivalahm</b></a></td>
   </tr>
 </table>
 
