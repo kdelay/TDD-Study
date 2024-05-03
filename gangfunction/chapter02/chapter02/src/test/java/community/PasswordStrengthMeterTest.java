@@ -7,9 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
- * 1. Objectives(교재)
- * - 값이 없는 경우
- * 2.Objectives(개인)
+ * 1.Objectives(개인)
  * - 특수문자가 들어오는 경우
  * - 인코딩에 오류가 있는경우
  * - 복사 붙여넣기로 입력하는 경우
@@ -69,8 +67,9 @@ public class PasswordStrengthMeterTest {
       //then
       Assertions.assertFalse(actual);
     }
+
     @Test
-    void password_null_Input(){
+    void password_null_Input() {
       // given
       String password = null;
       // when
@@ -78,8 +77,18 @@ public class PasswordStrengthMeterTest {
       //then
       Assertions.assertFalse(actual);
     }
-  }
 
+    @Test
+    void password_SpecialCharacter_Input() {
+      // given
+      String password = "\"!@#$asdfsadA1%^&*()\"";
+      // when
+      boolean actual = passWordStrengthMeter.calculate(password);
+      //then
+      Assertions.assertFalse(actual);
+
+    }
+  }
     @Nested
     @DisplayName("{Green}성공할 경우")
     class GreenCases {
@@ -93,6 +102,6 @@ public class PasswordStrengthMeterTest {
         //then
         Assertions.assertTrue(actual);
       }
+    }
   }
-}
 

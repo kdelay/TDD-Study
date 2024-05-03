@@ -12,7 +12,8 @@ public class PasswordStrengthMeter {
       return false;
     }
     //길이가 8글자 이상인 경우
-    if(password.length() >= 8 && containsNumber(password) && containsUppercase(password)){
+    if(password.length() >= 8 && containsNumber(password) && containsUppercase(password)
+        && !containsSpecialChar(password)){
       return true;
     }
     return false;
@@ -23,6 +24,10 @@ public class PasswordStrengthMeter {
   }
   boolean containsUppercase(String str) {
     String regex = ".*[A-Z].*";
+    return str.matches(regex);
+  }
+  boolean containsSpecialChar(String str) {
+    String regex = ".*[`~!@#$%^&*()-_=+|[{]};:'\",<.>/?].*";
     return str.matches(regex);
   }
 
