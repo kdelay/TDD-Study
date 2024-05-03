@@ -64,6 +64,16 @@ public class PasswordStrengthMeterTest {
       //then
       Assertions.assertFalse(actual);
     }
+
+    @Test
+    void only_not_upperCaseIncludes() {
+      // given
+      String password = "abcdefgh1";
+      // when
+      boolean actual = passWordStrengthMeter.calculate(password);
+      //then
+      Assertions.assertFalse(actual);
+    }
   }
 
     @Nested
