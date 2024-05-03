@@ -8,12 +8,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * 1. Objectives(교재)
- * - 숫자를 포함하지않고 나머지 조건은 충족하는 경우
  * - 값이 없는 경우
- * - 대문자를 포함하지 않고 나머지 조건을 충족하는 경우
- * - 길이가 8글자 이상인 조건만 충족하는 경우
- * - 숫자 포함조건만 충족하는 경우
- * - 대문자 포함 조건만 충족하는 경우
  * 2.Objectives(개인)
  * - 특수문자가 들어오는 경우
  * - 인코딩에 오류가 있는경우
@@ -69,6 +64,15 @@ public class PasswordStrengthMeterTest {
     void only_not_upperCaseIncludes() {
       // given
       String password = "abcdefgh1";
+      // when
+      boolean actual = passWordStrengthMeter.calculate(password);
+      //then
+      Assertions.assertFalse(actual);
+    }
+    @Test
+    void password_null_Input(){
+      // given
+      String password = null;
       // when
       boolean actual = passWordStrengthMeter.calculate(password);
       //then

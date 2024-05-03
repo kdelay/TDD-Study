@@ -8,6 +8,9 @@ public class PasswordStrengthMeter {
    * @return : 패스워드의 강도를 boolean으로 반환
    */
   boolean calculate(String password){
+    if(password == null){
+      return false;
+    }
     //길이가 8글자 이상인 경우
     if(password.length() >= 8 && containsNumber(password) && containsUppercase(password)){
       return true;
