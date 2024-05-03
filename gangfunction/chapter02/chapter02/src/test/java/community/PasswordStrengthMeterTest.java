@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 /**
- * 1. Objectives(교재) - 길이만 8글자 미만이고 나머지 조건을 충족하는 경우
+ * 1. Objectives(교재)
  * - 숫자를 포함하지않고 나머지 조건은 충족하는 경우
  * - 값이 없는 경우
  * - 대문자를 포함하지 않고 나머지 조건을 충족하는 경우
@@ -55,6 +55,17 @@ public class PasswordStrengthMeterTest {
 
     }
 
+    @Test
+    void only_not_numberIncludes() {
+      // given
+      String password = "abcdefghA";
+      // when
+      boolean actual = passWordStrengthMeter.calculate(password);
+      //then
+      Assertions.assertFalse(actual);
+    }
+  }
+
     @Nested
     @DisplayName("{Green}성공할 경우")
     class GreenCases {
@@ -68,7 +79,6 @@ public class PasswordStrengthMeterTest {
         //then
         Assertions.assertTrue(actual);
       }
-
-    }
   }
 }
+
