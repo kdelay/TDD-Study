@@ -6,13 +6,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-/**
- * 1.Objectives(개인)
- * - 특수문자가 들어오는 경우
- * - 인코딩에 오류가 있는경우
- * - 복사 붙여넣기로 입력하는 경우
- * - 스페이스바가 입력되는 경우
- */
 @DisplayName("암호 검사기 테스트")
 public class PasswordStrengthMeterTest {
 
@@ -88,6 +81,8 @@ public class PasswordStrengthMeterTest {
       Assertions.assertFalse(actual);
 
     }
+
+
   }
     @Nested
     @DisplayName("{Green}성공할 경우")
