@@ -5,26 +5,17 @@ public class PasswordStrengthMeter {
     public PasswordStrength meter(String s) {
         if (s == null || s.isEmpty()) return PasswordStrength.INVALID;
 
+        int metCounts = 0;
+
         //길이 8글자 충족 여부
-        boolean lengthEnough = s.length() >= 8;
+        if (s.length() >= 8) metCounts++;
         //숫자 포함 여부
-        boolean containsNum = meetsContainingNumberCriteria(s);
+        if (meetsContainingNumberCriteria(s)) metCounts++;
         //대문자 포함 여부
-        boolean containsUpp = meetsContainingUpperCaseCriteria(s);
+        if (meetsContainingUpperCaseCriteria(s)) metCounts++;
 
-        if (lengthEnough && !containsNum && !containsUpp) {
-            return PasswordStrength.WEAK;
-        }
-        if (!lengthEnough && containsNum && !containsUpp) {
-            return PasswordStrength.WEAK;
-        }
-        if (!lengthEnough && !containsNum && containsUpp) {
-            return PasswordStrength.WEAK;
-        }
-
-        if (!lengthEnough) return PasswordStrength.NORMAL;
-        if (!containsNum) return PasswordStrength.NORMAL;
-        if (!containsUpp) return PasswordStrength.NORMAL;
+        if (metCounts == 1) return PasswordStrength.WEAK;
+        if (metCounts == 2) return PasswordStrength.NORMAL;
 
         return PasswordStrength.STRONG;
     }
