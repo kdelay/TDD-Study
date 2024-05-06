@@ -14,7 +14,7 @@ public class PasswordStrengthMeter {
         //대문자 포함 여부
         if (meetsContainingUpperCaseCriteria(s)) metCounts++;
 
-        if (metCounts == 1) return PasswordStrength.WEAK;
+        if (metCounts <= 1) return PasswordStrength.WEAK;
         if (metCounts == 2) return PasswordStrength.NORMAL;
 
         return PasswordStrength.STRONG;
