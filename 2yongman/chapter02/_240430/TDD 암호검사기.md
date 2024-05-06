@@ -63,20 +63,20 @@ private double price;
 
 내가 한 부분
 
-public double calculateTotalPrice(List<Product> products) {
-return calculateTotal(products);
-}
+    public double calculateTotalPrice(List<Product> products) {
+        return calculateTotal(products);
+    }
 
-private boolean isProductAvailable(Product product) {
-return product.getStatus().equals("available");
-}
+    private double calculateTotal(List<Product> products) {
+        double total = 0;
+        for (Product product : products) {
+            if (isProductAvailable(product)) {
+                total += product.getPrice();
+            }
+        }
+        return total;
+    }
 
-private double calculateTotal(List<Product> products) {
-double total = 0;
-for (Product product : products) {
-if (isProductAvailable(product)) {
-total += product.getPrice();
-}
-}
-return total;
-}
+    private boolean isProductAvailable(Product product) {
+        return product.getStatus().equals("available");
+    }
