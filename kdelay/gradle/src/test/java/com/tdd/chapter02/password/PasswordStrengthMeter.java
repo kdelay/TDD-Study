@@ -5,15 +5,19 @@ public class PasswordStrengthMeter {
     public PasswordStrength meter(String s) {
         if (s.length() < 8) return PasswordStrength.NORMAL;
 
-        boolean containsNum = false; //숫자 포함 여부
-        for (char ch : s.toCharArray()) {
-            if (ch >= '0' && ch <= '9') {
-                containsNum = true;
-                break;
-            }
-        }
+        //숫자 포함 여부
+        boolean containsNum = meetsContainingNumberCriteria(s);
 
         if (!containsNum) return PasswordStrength.NORMAL;
         return PasswordStrength.STRONG;
+    }
+
+    private static boolean meetsContainingNumberCriteria(String s) {
+        for (char ch : s.toCharArray()) {
+            if (ch >= '0' && ch <= '9') {
+                return true;
+            }
+        }
+        return false;
     }
 }
