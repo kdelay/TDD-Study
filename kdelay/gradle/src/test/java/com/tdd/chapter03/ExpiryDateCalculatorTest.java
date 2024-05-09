@@ -6,6 +6,16 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * 테스트 목록 정리
+ * - 1만원 납부하면 한 달 뒤가 만료일
+ * - 달의 마지막 날에 납부하면 다음 달 마지막 날이 만료일
+ * - 2만원 납부하면 2개월 뒤가 만료일
+ * - 3만원 납부하면 3개월 뒤가 만료일
+ * - 10만원 납부하면 1년 뒤가 만료일
+ * TODO 2020년 2월 29일 윤달 마지막 날에 10만원을 납부하면 2021년 2월 28일(윤달X)이 만료일
+ * TODO 13만원을 납부하면 1년 3개월 뒤가 만료일
+ */
 public class ExpiryDateCalculatorTest {
 
     private static void assertExpiryDate(PayData payData, LocalDate expectedExpiryDate) {
@@ -109,6 +119,17 @@ public class ExpiryDateCalculatorTest {
                         .payAmount(20_000)
                         .build(),
                 LocalDate.of(2019, 4, 30)
+        );
+    }
+
+    @Test
+    void 십만원을_납부하면_1년_제공() {
+        assertExpiryDate(
+                PayData.builder()
+                        .billingDate(LocalDate.of(2019, 1, 28))
+                        .payAmount(100_000)
+                        .build(),
+                LocalDate.of(2020, 1, 28)
         );
     }
 }
