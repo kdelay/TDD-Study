@@ -26,26 +26,26 @@ public class ExpiryDateCalculator {
     }
 
     private static LocalDate expiryDateUsingFirstBillingDate(PayData payData, int addedMonths) {
-        //금액만큼 만료 달이 증가된 임시 만료일
+
         LocalDate candidateExp = payData.getBillingDate().plusMonths(addedMonths);
 
-        //첫 납부일의 일자
-        final int dayOfFirstBilling = payData.getFirstBillingDate().getDayOfMonth();
+        if (isSameDayOfMonth(payData.getFirstBillingDate(), candidateExp)) {
+            final int dayOfFirstBilling = payData.getFirstBillingDate().getDayOfMonth();
+            final int dayLenOfCandiMon = lastDayOfMonth(candidateExp);
 
-        //첫 납부일 != 임시 만료일
-        if (dayOfFirstBilling != candidateExp.getDayOfMonth()) {
-
-            //만료 달의 가장 마지막 일자
-            final int dayLenOfCandiMon = YearMonth.from(candidateExp).lengthOfMonth();
-
-            //2만원 이상 납부 + (임시 만료일 < 첫 납부일): 임시 만료 달의 일자가 넘는 경우
-            // -> 임시 만료 달의 마지막 날짜를 만료일로 사용
             if(dayLenOfCandiMon < dayOfFirstBilling) {
                 return candidateExp.withDayOfMonth(dayLenOfCandiMon);
             }
-            //1만원 납부 -> 첫 납부일을 만료일로 사용
             return candidateExp.withDayOfMonth(dayOfFirstBilling);
-        } else return candidateExp; //첫 납부일 == 임시 만료일인 경우, 그대로 반환
+        } else return candidateExp;
+    }
+
+    private static boolean isSameDayOfMonth(LocalDate date1, LocalDate date2) {
+        return date1.getDayOfMonth() != date2.getDayOfMonth();
+    }
+
+    private static int lastDayOfMonth(LocalDate date) {
+        return YearMonth.from(date).lengthOfMonth();
     }
 
 }
