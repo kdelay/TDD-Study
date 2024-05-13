@@ -6,6 +6,7 @@
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/gangfunction/chapter02/chapter02" />
+    <file type="web" url="file://$PROJECT_DIR$/gangfunction/chapter03/_240512/chapter03" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_22" default="true" project-jdk-name="openjdk-22" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
