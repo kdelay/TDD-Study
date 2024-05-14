@@ -55,3 +55,12 @@ k
 ;gangfunction/chapter07/src/test/java/TestDoubleExample.java,8/c/8cdd341c5831c816c538d3ca541b358ca698d9ae
 w
 Ggangfunction/chapter07/src/test/java/TimeWastingInjectedRepository.java,f/1/f169bdbc4d7cd91059898ff834847bce5462061b
+=
+chapter02.iml,d/9/d96994ea1d9ec60935d16c9124db076ac3f909df
+=
+chapter03.iml,c/3/c31cfe1e13ae9b0534b3a5e45cf14f322088816d
+=
+chapter07.iml,1/7/170e6630a508de4ee389e90c9dbb2a5a861fac0f
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
