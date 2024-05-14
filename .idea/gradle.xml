@@ -26,6 +26,11 @@
         <option name="externalProjectPath" value="$PROJECT_DIR$/gangfunction/chapter07" />
         <option name="gradleHome" value="" />
         <option name="gradleJvm" value="17" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/gangfunction/chapter07" />
+          </set>
+        </option>
       </GradleProjectSettings>
     </option>
   </component>
