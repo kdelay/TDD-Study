@@ -112,7 +112,7 @@ public class LifecycleTest {
 
 ```
 
-![image-20240516203636190](/Users/choihyun-min/Library/Application Support/typora-user-images/image-20240516203636190.png)
+<img width="1126" alt="image" src="https://github.com/vivalahm/vivalahm.github.io/assets/48741014/e66a2a6d-5947-45f6-b01e-48e5521627bc">
 
 - @Test 메서드를 실행할 때마다 객체를 새로 생성하고 테스트 메서드를 실행하기 전과 후에 @BeforeEach 애노테이션과 @AfterEach 애노테이션을 붙인 메서드를 실행한다.
 - @BeforeEach 애노테이션은 테스트를 실행하는데 필요한 준비 작업을 할 때 사용한다.
