@@ -1,9 +1,10 @@
 package com.tdd.chapter07.user;
 
+import com.tdd.chapter07.user.exception.WeakPasswordException;
 import com.tdd.chapter07.user.repository.MemoryUserRepository;
 import com.tdd.chapter07.user.service.UserRegister;
 import com.tdd.chapter07.user.validation.EmailNotifier;
-import com.tdd.chapter07.user.validation.StubWeakPasswordChecker;
+import com.tdd.chapter07.user.validation.WeakPasswordChecker;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -13,21 +14,24 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.BDDMockito.then;
 
 @ExtendWith(MockitoExtension.class)
 public class UserRegisterMockTest {
 
     private UserRegister userRegister;
-
-    private StubWeakPasswordChecker stubPasswordChecker = new StubWeakPasswordChecker();
+    @Mock
+    private WeakPasswordChecker mockPasswordChecker;
     private MemoryUserRepository fakeRepository = new MemoryUserRepository();
     @Mock
     private EmailNotifier mockEmailNotifier;
 
     @BeforeEach
     void setUp() {
-        userRegister = new UserRegister(stubPasswordChecker, fakeRepository, mockEmailNotifier);
+        userRegister = new UserRegister(mockPasswordChecker, fakeRepository, mockEmailNotifier);
     }
 
     @Test
@@ -44,5 +48,26 @@ public class UserRegisterMockTest {
         //모의 객체를 실행할 때 사용한 인자 값
         String realEamil = captor.getValue();
         assertEquals("email@email.com", realEamil);
+    }
+
+    @Test
+    @DisplayName("약한 암호면 가입 실패")
+    void weakPassword() {
+        //인자 값으로 "pw"를 주었을 때 결과 값이 true이다.
+        given(mockPasswordChecker.checkPasswordWeak("pw")).willReturn(true);
+
+        //true일 때 exception 발생 (조건문)
+        assertThrows(WeakPasswordException.class,
+                () -> userRegister.register("id", "pw", "email"));
+    }
+
+    @Test
+    @DisplayName("회원 가입시 암호 검사 수행")
+    void checkPassword() {
+        //회원 가입
+        userRegister.register("id", "pw", "email");
+
+        //checkPasswordWeak 메서드가 호출되었는지 검증(파라미터는 String 타입)
+        then(mockPasswordChecker).should().checkPasswordWeak(anyString());
     }
 }
