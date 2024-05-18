@@ -4,6 +4,7 @@ import com.tdd.chapter07.user.domain.User;
 import com.tdd.chapter07.user.exception.DupIdException;
 import com.tdd.chapter07.user.exception.WeakPasswordException;
 import com.tdd.chapter07.user.repository.MemoryUserRepository;
+import com.tdd.chapter07.user.validation.SpyEmailNotifier;
 import com.tdd.chapter07.user.validation.StubWeakPasswordChecker;
 import com.tdd.chapter07.user.service.UserRegister;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,10 +20,12 @@ public class UserRegisterTest {
     private StubWeakPasswordChecker stubPasswordChecker = new StubWeakPasswordChecker();
     //동일한 ID를 가진 회원이 존재하는지 확인하는 fake 대역
     private MemoryUserRepository fakeRepository = new MemoryUserRepository();
+    //이메일 발송 여부를 확인하는 spy 대역
+    private SpyEmailNotifier spyEmailNotifier = new SpyEmailNotifier();
 
     @BeforeEach
     void setUp() {
-        userRegister = new UserRegister(stubPasswordChecker, fakeRepository);
+        userRegister = new UserRegister(stubPasswordChecker, fakeRepository, spyEmailNotifier);
     }
 
     @Test
@@ -55,5 +58,14 @@ public class UserRegisterTest {
 
         assertEquals("id", savedUser.getId());
         assertEquals("email", savedUser.getEmail());
+    }
+
+    @Test
+    @DisplayName("가입하면 메일 전송")
+    void whenRegisterThenSendMail() {
+        userRegister.register("id", "pw", "email@email.com");
+
+        assertTrue(spyEmailNotifier.isCalled());
+        assertEquals("email@email.com", spyEmailNotifier.getEmail());
     }
 }
