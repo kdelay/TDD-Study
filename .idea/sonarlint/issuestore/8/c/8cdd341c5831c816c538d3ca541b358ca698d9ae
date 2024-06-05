@@ -1,0 +1,8 @@
+
+0
+java:S1220""Move this file to a named package.
+Q	java:S125$"<This block of commented-out lines of code should be removed.(µ€ÔÔ
+V	java:S125*"<This block of commented-out lines of code should be removed.(ËÿÀšýÿÿÿÿ
+Q	java:S1256"<This block of commented-out lines of code should be removed.(é™ƒ«
+h	java:S100D"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(úäÎ‡úÿÿÿÿ
+E	java:S106O"+Replace this use of System.out by a logger.(þÒãûÿÿÿÿ

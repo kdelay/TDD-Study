@@ -1,0 +1,12 @@
+
+c
+java:S1192("HDefine a constant instead of duplicating this literal "Sissors" 4 times.(Ìº¯ëþÿÿÿÿ
+b
+java:S11928"GDefine a constant instead of duplicating this literal "Papers" 4 times.(û×€®þÿÿÿÿ
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ð°¿ºúÿÿÿÿ
+0
+java:S1220""Move this file to a named package.
+h	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¡ö¨Øûÿÿÿÿ
+b	java:S100""NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(’˜Ù
+c	java:S1003"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¿‡ÿÒ
+h	java:S100C"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(§¾æÙúÿÿÿÿ
